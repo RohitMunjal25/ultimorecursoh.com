@@ -6,11 +6,14 @@ import { NavbarShell } from "@/components/shared/navbar-shell";
 import { ContentImage } from "@/components/shared/content-image";
 import { TaskPostCard } from "@/components/shared/task-post-card";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SchemaJsonLd } from "@/components/seo/schema-jsonld";
 import { buildPostUrl } from "@/lib/task-data";
 import { buildPostMetadata, buildTaskMetadata } from "@/lib/seo";
 import { fetchTaskPostBySlug, fetchTaskPosts } from "@/lib/task-data";
 import { SITE_CONFIG } from "@/lib/site-config";
+import { FileText, MessageSquare, HelpCircle, ExternalLink, Globe, Mail, MapPin, Users, BarChart3, UserPlus } from "lucide-react";
 
 export const revalidate = 3;
 
@@ -113,40 +116,123 @@ export default async function ProfileDetailPage({ params }: { params: Promise<{ 
       <main className="mx-auto w-full max-w-6xl px-4 pb-16 pt-10 sm:px-6 lg:px-8">
         <ProfileAuthBanner />
         <SchemaJsonLd data={breadcrumbData} />
-        <section className="rounded-3xl border border-border/60 bg-white/90 p-8 shadow-sm md:p-12">
-          <div className="grid gap-8 md:grid-cols-[200px_1fr] md:items-start">
-            <div className="flex justify-center md:justify-start">
-              <div className="relative h-36 w-36 overflow-hidden rounded-full border border-border/70 bg-muted">
-                {logoUrl ? (
-                  <ContentImage src={logoUrl} alt={post.title} fill className="object-cover" sizes="144px" intrinsicWidth={144} intrinsicHeight={144} />
-                ) : (
-                  <div className="flex h-full w-full items-center justify-center text-3xl font-semibold text-muted-foreground">
-                    {post.title.slice(0, 1).toUpperCase()}
+        <div className="space-y-8">
+          {/* Profile Header Card */}
+          <Card className="overflow-hidden border-0 shadow-lg">
+            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8">
+              <div className="flex flex-col items-center space-y-6 md:flex-row md:items-start md:space-x-8 md:space-y-0">
+                <div className="relative">
+                  <div className="relative h-32 w-32 overflow-hidden rounded-full border-4 border-white shadow-xl">
+                    {logoUrl ? (
+                      <ContentImage src={logoUrl} alt={post.title} fill className="object-cover" sizes="128px" intrinsicWidth={128} intrinsicHeight={128} />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-blue-500 to-indigo-600 text-3xl font-bold text-white">
+                        {post.title.slice(0, 1).toUpperCase()}
+                      </div>
+                    )}
                   </div>
-                )}
+                  <div className="absolute -bottom-2 -right-2 rounded-full bg-green-500 p-2 shadow-lg">
+                    <div className="h-4 w-4 rounded-full bg-white"></div>
+                  </div>
+                </div>
+                
+                <div className="flex-1 text-center md:text-left">
+                  <div className="space-y-2">
+                    <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">{brandName}</h1>
+                    {domain && (
+                      <div className="flex items-center justify-center gap-2 text-gray-600 md:justify-start">
+                        <Globe className="h-4 w-4" />
+                        <span className="text-sm font-medium">{domain}</span>
+                      </div>
+                    )}
+                  </div>
+                  
+                  <div className="mt-4 space-y-4">
+                    <div 
+                      className="prose prose-gray max-w-none text-gray-700"
+                      dangerouslySetInnerHTML={{ __html: descriptionHtml }}
+                    />
+                    
+                    <div className="flex flex-col gap-3 sm:flex-row">
+                      {website && (
+                        <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700">
+                          <Link href={website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                            <ExternalLink className="h-4 w-4" />
+                            Visit Official Site
+                          </Link>
+                        </Button>
+                      )}
+                      <Button asChild size="lg" variant="outline" className="border-blue-500 text-blue-600 hover:bg-blue-50">
+                        <Link href="/login" className="flex items-center gap-2">
+                          <UserPlus className="h-4 w-4" />
+                          Follow
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div>
-              <h1 className="text-3xl font-bold text-foreground sm:text-4xl">{brandName}</h1>
-              {domain ? (
-                <p className="mt-1 text-sm font-medium text-muted-foreground">{domain}</p>
-              ) : null}
-              <article
-                className="article-content prose prose-slate mt-6 max-w-2xl text-base leading-relaxed prose-p:my-4 prose-a:text-primary prose-a:underline prose-strong:font-semibold"
-                dangerouslySetInnerHTML={{ __html: descriptionHtml }}
-              />
-              {website ? (
-                <div className="mt-8">
-                  <Button asChild size="lg" className="px-7 text-base">
-                    <Link href={website} target="_blank" rel="noopener noreferrer">
-                      Visit Official Site
-                    </Link>
-                  </Button>
+          </Card>
+
+          {/* Tabs Section */}
+          <Card className="border-0 shadow-lg">
+            <CardContent className="p-0">
+              <Tabs defaultValue="translations" className="w-full">
+                <div className="border-b bg-gray-50 px-6 py-4">
+                  <TabsList className="grid w-full grid-cols-3 bg-transparent">
+                    <TabsTrigger value="translations" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">
+                      <FileText className="mr-2 h-4 w-4" />
+                      TRANSLATIONS
+                    </TabsTrigger>
+                    <TabsTrigger value="notes" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">
+                      <MessageSquare className="mr-2 h-4 w-4" />
+                      NOTES
+                    </TabsTrigger>
+                    <TabsTrigger value="questions" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">
+                      <HelpCircle className="mr-2 h-4 w-4" />
+                      QUESTIONS
+                    </TabsTrigger>
+                  </TabsList>
                 </div>
-              ) : null}
-            </div>
-          </div>
-        </section>
+                
+                <div className="p-6">
+                  <TabsContent value="translations" className="mt-0">
+                    <div className="space-y-4">
+                      <CardDescription className="text-base">
+                        No translations from this user
+                      </CardDescription>
+                      <p className="text-sm text-gray-500">
+                        The user has not added any translations yet.
+                      </p>
+                    </div>
+                  </TabsContent>
+                  
+                  <TabsContent value="notes" className="mt-0">
+                    <div className="space-y-4">
+                      <CardDescription className="text-base">
+                        No notes from this user
+                      </CardDescription>
+                      <p className="text-sm text-gray-500">
+                        The user has not added any notes yet.
+                      </p>
+                    </div>
+                  </TabsContent>
+                  
+                  <TabsContent value="questions" className="mt-0">
+                    <div className="space-y-4">
+                      <CardDescription className="text-base">
+                        No questions from this user
+                      </CardDescription>
+                      <p className="text-sm text-gray-500">
+                        The user has not asked any questions yet.
+                      </p>
+                    </div>
+                  </TabsContent>
+                </div>
+              </Tabs>
+            </CardContent>
+          </Card>
 
         {suggestedArticles.length ? (
           <section className="mt-12">
@@ -188,6 +274,7 @@ export default async function ProfileDetailPage({ params }: { params: Promise<{ 
             </nav>
           </section>
         ) : null}
+        </div>
       </main>
       <Footer />
     </div>
