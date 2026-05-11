@@ -10,7 +10,7 @@ export const siteContent = {
   hero: {
     badge: 'Latest stories and visuals',
     title: ['A thoughtful home for', 'stories, visuals, and discovery.'],
-    description: 'A PDF + Profile site for Ultimorecursoh, built for clean discovery and structured publishing.',
+    description: 'A site for Ultimorecursoh, built for clean discovery and structured publishing.',
     primaryCta: {
       label: 'Read latest posts',
       href: '/articles',
@@ -195,11 +195,7 @@ export const taskIntroCopy: Record<
       'These resources work alongside stories, listings, and profiles, helping document-style content stay connected to the rest of the platform.',
       'Browse by category to find relevant files quickly, then continue into related sections when you want more context.',
     ],
-    links: [
-      { label: 'Read articles', href: '/articles' },
-      { label: 'See listings', href: '/listings' },
-      { label: 'Explore profiles', href: '/profile' },
-    ],
+    links: [],
   },
   social: {
     title: 'Short updates and community signals',

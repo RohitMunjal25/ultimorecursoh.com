@@ -175,12 +175,6 @@ export async function HomePageOverride() {
                   Start a project note
                   <ArrowRight className="h-4 w-4" />
                 </Link>
-                <Link
-                  href="/profile"
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-[#004040] bg-transparent px-7 py-3.5 text-sm font-bold uppercase tracking-wide text-[#004040] transition hover:bg-[#004040] hover:text-white"
-                >
-                  See profile examples
-                </Link>
               </div>
               <div className="mt-12 grid gap-4 sm:grid-cols-3">
                 {metrics.map((m) => (

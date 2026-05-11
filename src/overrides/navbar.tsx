@@ -26,9 +26,6 @@ const homeCtaSignInClass =
 const navItems = [
   { name: 'Home', href: '/', icon: null as null },
   { name: 'PDF Services', href: '/pdf', icon: FileText },
-  { name: 'Profile', href: '/profile', icon: UserRound },
-  { name: 'Our Team', href: '/team', icon: Users },
-  { name: 'Contact', href: '/contact', icon: Mail },
 ]
 
 export function NavbarOverride() {
@@ -47,7 +44,6 @@ export function NavbarOverride() {
           </div>
           <div className="min-w-0">
             <span className="block truncate text-base font-bold uppercase tracking-[0.06em] text-white">{SITE_CONFIG.name}</span>
-            <span className="hidden text-[10px] font-medium uppercase tracking-[0.2em] text-teal-100/90 sm:block">PDF + Profile</span>
           </div>
         </Link>
 

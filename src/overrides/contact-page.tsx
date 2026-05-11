@@ -52,47 +52,7 @@ export function ContactPageOverride() {
                 ))}
               </ul>
 
-              <div className="mt-10 grid gap-4 sm:grid-cols-2">
-                <a
-                  href={`mailto:${email}`}
-                  className="flex items-start gap-3 rounded-[1.25rem] border border-[#d4e0df] bg-[#f7fbfa] p-4 transition hover:border-[#004040]/25"
-                >
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#ff8c00] text-white">
-                    <Mail className="h-5 w-5" />
-                  </span>
-                  <span>
-                    <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#004040]/70">Write directly</span>
-                    <span className="mt-1 block text-sm font-semibold text-[#004040] break-all">{email}</span>
-                  </span>
-                </a>
-                <div className="flex items-start gap-3 rounded-[1.25rem] border border-[#d4e0df] bg-[#f7fbfa] p-4">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#004040] text-white">
-                    <Clock className="h-5 w-5" />
-                  </span>
-                  <span>
-                    <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#004040]/70">Studio hours</span>
-                    <span className="mt-1 block text-sm font-semibold text-[#004040]">Mon–Fri · 9:00–18:00 (local)</span>
-                  </span>
-                </div>
-              </div>
-
-              <div className="mt-4 flex flex-col gap-4 sm:flex-row">
-                <div className="flex flex-1 items-start gap-3 rounded-[1.25rem] border border-[#d4e0df] bg-white p-4">
-                  <Phone className="mt-0.5 h-5 w-5 shrink-0 text-[#ff8c00]" />
-                  <span>
-                    <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#004040]/70">Call-backs</span>
-                    <span className="mt-1 block text-sm font-semibold text-[#004040]">Leave a number in the form— we’ll only ring with a time window you approve.</span>
-                  </span>
-                </div>
-                <div className="flex flex-1 items-start gap-3 rounded-[1.25rem] border border-[#d4e0df] bg-white p-4">
-                  <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#ff8c00]" />
-                  <span>
-                    <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#004040]/70">Location</span>
-                    <span className="mt-1 block text-sm font-semibold text-[#004040]">Remote-first team · same-day replies when possible</span>
-                  </span>
-                </div>
-              </div>
-
+              
               <Link
                 href="/pdf"
                 className="mt-10 inline-flex w-fit items-center gap-2 text-sm font-bold uppercase tracking-wide text-[#ff8c00] hover:underline"

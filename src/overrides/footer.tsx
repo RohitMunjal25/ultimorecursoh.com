@@ -13,13 +13,10 @@ export function FooterOverride() {
               <span className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl border border-white/20 bg-white p-2">
                 <img src="/favicon.png?v=20260422" alt="" width={56} height={56} className="h-full w-full object-contain" />
               </span>
-              <span>
-                <span className="block text-lg font-bold uppercase tracking-wide">{SITE_CONFIG.name}</span>
-                <span className="text-xs font-medium uppercase tracking-[0.2em] text-teal-200/90">PDF + Profile</span>
-              </span>
+              <span className="block text-lg font-bold uppercase tracking-wide">{SITE_CONFIG.name}</span>
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-teal-100/90">
-              Coherent PDFs and on-brand profiles in one place—so every outbound document matches how you show up online.
+              Production-grade PDFs and document systems for modern teams.
             </p>
             <Link
               href="/contact"
@@ -37,13 +34,13 @@ export function FooterOverride() {
                 </Link>
               </li>
               <li>
-                <Link href="/pdf" className="transition-colors hover:text-white">
-                  PDF services
+                <Link href="/about" className="transition-colors hover:text-white">
+                  About
                 </Link>
               </li>
               <li>
-                <Link href="/profile" className="transition-colors hover:text-white">
-                  Profiles
+                <Link href="/pdf" className="transition-colors hover:text-white">
+                  PDF services
                 </Link>
               </li>
             </ul>
@@ -53,13 +50,8 @@ export function FooterOverride() {
             <ul className="mt-5 space-y-3 text-sm text-teal-50">
               <li>
                 <Link href="/contact" className="transition-colors hover:text-white">
-                  Message the team
+                  Contact Page
                 </Link>
-              </li>
-              <li>
-                <a href={`mailto:hello@${SITE_CONFIG.domain}`} className="transition-colors hover:text-white">
-                  hello@{SITE_CONFIG.domain}
-                </a>
               </li>
             </ul>
             <h3 className="mt-8 text-xs font-bold uppercase tracking-[0.22em] text-[#ff8c00]">Legal</h3>
